@@ -28,7 +28,7 @@ before_script:
 script:
   - molecule lint
   - molecule syntax
-  - molecule create
+  - molecule --debug create
   - molecule test
 
 notifications:

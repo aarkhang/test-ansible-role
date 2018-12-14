@@ -17,6 +17,7 @@
     - debug: msg="credentials_file {{ lookup('env', 'GCE_CREDENTIALS_FILE') }}"
     - debug: msg="service_account_email {{ lookup('env', 'GCE_SERVICE_ACCOUNT_EMAIL') }}"
     - debug: var=ssh_identity_file
+    - debug: msg="no_log {{ not lookup('env', 'MOLECULE_DEBUG') }}"
 
     - name: Create molecule instance(s)
       gce:
