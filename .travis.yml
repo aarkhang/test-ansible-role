@@ -20,7 +20,7 @@ before_install:
   - chmod 0600 ~/.ssh/gce_rsa_key
 
 install:
-  - pip install ansible==2.3.0 molecule apache-libcloud
+  - pip install molecule apache-libcloud pycrypto
 
 before_script:
   # Use actual role name for project directory
