@@ -25,7 +25,13 @@ before_script:
   - ./tests/rename_role_dir.sh
 
 script:
-  - molecule test
+  - molecule lint
+  - molecule syntax
+  - molecule --debug create
+  - molecule --debug converge
+  - molecule --debug idempotence
+  - molecule --debug verify
+  - molecule --debug test
 
 notifications:
   slack:
