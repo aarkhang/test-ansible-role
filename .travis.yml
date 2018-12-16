@@ -1,11 +1,8 @@
 ---
 language: python
-python:
-  - '3.6'
 
 env:
   global:
-    - MOLECULE_DEBUG: true
     - ROLE_NAME: db
     - GCE_CREDENTIALS_FILE="~/.ssh/credentials.json"
     - GCE_SERVICE_ACCOUNT_EMAIL="travis-ci@infra-219311.iam.gserviceaccount.com"
@@ -23,10 +20,7 @@ before_script:
   - ./tests/rename_role_dir.sh
 
 script:
-  - molecule lint
-  - molecule syntax
-  - molecule --debug create
-  - molecule test
+  - molecule --debug test
 
 notifications:
   slack:
