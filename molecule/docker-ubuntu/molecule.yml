@@ -1,15 +1,18 @@
 ---
 scenario:
-  name: default
+  name: docker-ubuntu
 
 driver:
-  name: gce
+  name: docker
 
 platforms:
   - name: instance
-    zone: europe-west1-b
-    machine_type: f1-micro
-    image: ubuntu-1604-xenial-v20181204
+    image: "geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu1604}-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
 
 provisioner:
   name: ansible
@@ -21,7 +24,6 @@ lint:
 
 verifier:
   name: testinfra
-  directory: ../tests/
   lint:
     name: flake8
   options:

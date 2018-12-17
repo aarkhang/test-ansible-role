@@ -1,15 +1,15 @@
 ---
 scenario:
-  name: default
+  name: vagrant-ubuntu
 
 driver:
-  name: gce
+  name: vagrant
+  provider:
+    name: virtualbox
 
 platforms:
   - name: instance
-    zone: europe-west1-b
-    machine_type: f1-micro
-    image: ubuntu-1604-xenial-v20181204
+    box: ubuntu/xenial64
 
 provisioner:
   name: ansible
