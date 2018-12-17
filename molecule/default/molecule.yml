@@ -18,5 +18,9 @@ scenario:
   name: default
 verifier:
   name: testinfra
+  directory: ../tests/
   lint:
     name: flake8
+  options:
+    # show which tests where executed in test output
+    v: 1
